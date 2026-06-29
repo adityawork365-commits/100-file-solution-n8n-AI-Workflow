@@ -1,16 +1,16 @@
-# 100+ file solution (n8n Workflow)
+# 🤖 100+ file solution (n8n AI Workflow)
 
-An automated backend workflow built in n8n that monitors a Google Drive folder, dynamically extracts text from incoming documents (PDFs & Word Docs), generates intelligent summaries using the **Google Gemini AI Model**, and logs the structured data into Google Sheets.
+An enterprise-grade, automated backend workflow built in n8n designed to handle bulk document processing (**100+ files at a time**). The system monitors a Google Drive folder, dynamically extracts text from massive incoming batches of documents (PDFs & Word Docs), generates intelligent summaries using the **Google Gemini AI Model**, and logs the structured data safely into Google Sheets without breaking rate limits.
 
 ---
 
 ## 🚀 Key Features
 
-* **Automated File Discovery**: Scans specified Google Drive folders for new documents automatically.
+* **Bulk File Management**: Specifically architected as a **100+ file solution** to systematically discover and handle high volumes of files from Google Drive.
 * **Smart File Routing**: Uses conditional switch logic to route files based on extensions (`.pdf` / `.doc`).
 * **Advanced Text Extraction**: Seamlessly extracts raw text content from both PDF and Word formats.
 * **AI-Powered Summarization**: Leverages the **Google Gemini LLM** (via Advanced AI nodes) to extract key insights and generate summaries.
-* **Batch Processing (Looping)**: Implements sequential data processing (one-by-one) to optimize system memory and prevent API rate limits.
+* **Batch Processing & Rate Limiting (Looping)**: Implements sequential data processing (one-by-one) via a control loop. This is critical for the *100+ file solution* to optimize system memory and prevent API rate-limit blocks from Google and Gemini.
 * **Structured Data Logging**: Appends processed filenames along with their AI summaries into a designated Google Sheet.
 
 ---
@@ -42,9 +42,9 @@ The sequential flow of data across the canvas operates as follows:
 
 ### Detailed Node Breakdown
 
-1. **Trigger (`Execute Workflow`)**: Manually starts the execution sequence on demand.
-2. **Search Files and Folders**: References the specified target directory inside Google Drive to list files.
-3. **Process Files One by One**: Acts as a control loop iterator to process one file entity at a time, ensuring safety from system crashes.
+1. **Trigger (`Execute Workflow`)**: Manually starts the execution sequence on demand for processing the file batch.
+2. **Search Files and Folders**: References the specified target directory inside Google Drive to list all queued files (capable of fetching 100+ entities).
+3. **Process Files One by One**: Acts as a control loop iterator to process one file entity at a time, ensuring safety from system crashes during bulk runs.
 4. **Download File**: Downloads the stream of the active loop binary object locally into the execution container.
 5. **Check File Extension**: Evaluates the routing rules (`.pdf` vs `.doc`) to assign the correct downstream text conversion algorithm.
 6. **Extract from PDF / DOC**: Converts binary documents into readable text payloads.
