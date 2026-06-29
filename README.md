@@ -1,4 +1,4 @@
-# 🤖 Automated Document AI Summarizer (n8n Workflow)
+# 100+ file solution (n8n Workflow)
 
 An automated backend workflow built in n8n that monitors a Google Drive folder, dynamically extracts text from incoming documents (PDFs & Word Docs), generates intelligent summaries using the **Google Gemini AI Model**, and logs the structured data into Google Sheets.
 
